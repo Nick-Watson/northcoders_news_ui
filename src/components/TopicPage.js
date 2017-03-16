@@ -4,7 +4,7 @@ import { fetchArticles } from '../actions/actions'
 import ArticleCard from './ArticleCard'
 import {Link} from 'react-router'
 
-const ArticleList = React.createClass({
+const TopicPage = React.createClass({
   componentDidMount() {
     this.props.getArticles()
   },
@@ -13,10 +13,10 @@ const ArticleList = React.createClass({
       <div id='ArticleList'>
         {this.props
           .articles.articles
-          .sort((a, b) => b.votes - a.votes)
-          .map((article, i) =>
-            <Link key={i} to={article._id}><ArticleCard title={article.title} votes={article.votes} /></Link>
-          )}
+          //.filter(article => article.belongs_to === this.props.params.topic)
+          .map((article, i) =>{
+            <Link to={article._id}><ArticleCard key={i} title={article.title} votes={article.votes} /></Link>
+        })}
         Articles here
       </div>
     );
@@ -37,4 +37,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
+export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
