@@ -1,24 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { fetchTopics } from '../actions/actions'
-import { Link } from 'react-router'
+import { connect } from 'react-redux';
+import { fetchTopics } from '../actions/actions';
+import { Link } from 'react-router';
+import '../css/bulma.css';
 
 const NavBar = React.createClass({
-  componentDidMount() {
-    this.props.getTopics()
+  componentDidMount () {
+    this.props.getTopics();
   },
   render: function () {
     return (
       <div>
-        <nav>
+        <nav className='tabs is-medium is-right'>
           <ul>
             <li>
-              <Link to='/'>HOME</Link>
+              <Link to='/'>All</Link>
             </li>
             {this.props
-              .topics.topics
-              // FIXME: FIX SORT!!
-              .sort((a, b) => b.slug - a.slug)
+              .topics
+              .sort((a, b) => b.slug < a.slug)
               .map((topic, i) =>
                 <li>
                   <Link key={i} to={topic.slug}>{topic.title}</Link>
@@ -31,18 +31,18 @@ const NavBar = React.createClass({
   }
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     getTopics: () => {
-      dispatch(fetchTopics())
+      dispatch(fetchTopics());
     }
-  }
+  };
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
-    topics: state.topics
-  }
+    topics: state.topics.topics
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

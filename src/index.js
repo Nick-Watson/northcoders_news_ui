@@ -10,8 +10,8 @@ import './css/font-awesome.css';
 
 import App from './components/App';
 import ArticleList from './components/ArticleList';
-import TopicPage from './components/TopicPage'
 import reducer from './reducer/index.reducer';
+import ArticlePage from './components/ArticlePage';
 
 const logger = createLogger()
 
@@ -23,7 +23,8 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={ArticleList} />
-        <Route path='/:topic' component={TopicPage} />
+        <Route path='/:topic' component={ArticleList} />
+        <Route path='/article/:article_ID' component={ArticlePage} />
       </Route>
     </Router>
   </Provider>,

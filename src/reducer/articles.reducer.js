@@ -2,7 +2,7 @@ import * as types from '../actions/types';
 
 // good template for data fetching
 const initialState = {
-  articles: [],
+  list: [],
   loading: false,
   error: null
 };
@@ -15,7 +15,7 @@ function articlesReducer (prevState = initialState, action) {
   }
 
   if (action.type === types.FETCH_ARTICLES_SUCCESS) {
-    newState.articles = action.data;
+    newState.list = action.data;
     newState.loading = false;
   }
 

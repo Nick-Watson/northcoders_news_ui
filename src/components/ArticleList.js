@@ -1,40 +1,44 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { fetchArticles } from '../actions/actions'
-import ArticleCard from './ArticleCard'
-import {Link} from 'react-router'
+import { connect } from 'react-redux';
+import { fetchArticles } from '../actions/actions';
+import ArticleCard from './ArticleCard';
+import {Link} from 'react-router';
 
 const ArticleList = React.createClass({
-  componentDidMount() {
-    this.props.getArticles()
+  componentDidMount () {
+    this.props.getArticles();
   },
-  render() {
+  render () {
     return (
       <div id='ArticleList'>
         {this.props
-          .articles.articles
-          .sort((a, b) => b.votes - a.votes)
+          .articles
+          .filter((article) => {
+            if (!this.props.params.topic) return true;
+            return article.belongs_to === this.props.params.topic
+          })
           .map((article, i) =>
-            <Link key={i} to={article._id}><ArticleCard title={article.title} votes={article.votes} /></Link>
+            <ArticleCard key={i} title={article.title} votes={article.votes} link={article._id}/>
           )}
-        Articles here
+      
       </div>
     );
   }
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     getArticles: () => {
-      dispatch(fetchArticles())
+      dispatch(fetchArticles());
     }
-  }
+  };
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state, ownProps) {
   return {
-    articles: state.articles
-  }
+    articles: state.articles.list.sort((a, b) => b.votes - a.votes)
+
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
