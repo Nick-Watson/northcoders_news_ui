@@ -18,10 +18,9 @@ const NavBar = React.createClass({
             </li>
             {this.props
               .topics
-              .sort((a, b) => b.slug < a.slug)
               .map((topic, i) =>
-                <li>
-                  <Link key={i} to={topic.slug}>{topic.title}</Link>
+                <li key={i}>
+                  <Link key={i} to={'/' + topic.slug}>{topic.title}</Link>
                 </li>
               )}
           </ul>
@@ -35,13 +34,14 @@ function mapDispatchToProps (dispatch) {
   return {
     getTopics: () => {
       dispatch(fetchTopics());
-    }
+    },
   };
 }
 
 function mapStateToProps (state) {
   return {
-    topics: state.topics.topics
+    topics: state.topics.topics.sort((a, b) => b.slug < a.slug)
+
   };
 }
 

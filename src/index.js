@@ -9,7 +9,7 @@ import './css/bulma.css';
 import './css/font-awesome.css';
 
 import App from './components/App';
-import ArticleList from './components/ArticleList';
+import FrontPage from './components/FrontPage';
 import reducer from './reducer/index.reducer';
 import ArticlePage from './components/ArticlePage';
 
@@ -22,9 +22,11 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={App}>
-        <IndexRoute component={ArticleList} />
-        <Route path='/:topic' component={ArticleList} />
-        <Route path='/article/:article_ID' component={ArticlePage} />
+        <IndexRoute component={FrontPage} />
+        <Route path='/:topic' component={FrontPage} />
+        <Route path='/:topic/:articleId' component={ArticlePage}>
+          {/*<Route path='/:topic/:articleId/comments' component={CommentPage}*/}
+        </Route>
       </Route>
     </Router>
   </Provider>,

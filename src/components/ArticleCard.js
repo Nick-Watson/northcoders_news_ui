@@ -12,7 +12,7 @@ const ArticleCard = function (props) {
         </div>
         <div className='media-content'>
           <div className='content'>
-            <Link to={'article/' + props.link}>{props.title}</Link>
+            <Link to={`/${props.topic}/${props.id}`}>{props.title}</Link>
           </div>
         </div>
       </article>

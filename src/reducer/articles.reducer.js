@@ -3,6 +3,7 @@ import * as types from '../actions/types';
 // good template for data fetching
 const initialState = {
   list: [],
+  byId: {},
   loading: false,
   error: null
 };
@@ -16,6 +17,7 @@ function articlesReducer (prevState = initialState, action) {
 
   if (action.type === types.FETCH_ARTICLES_SUCCESS) {
     newState.list = action.data;
+    newState.byId = normaliseData(action.data);
     newState.loading = false;
   }
 
@@ -25,6 +27,21 @@ function articlesReducer (prevState = initialState, action) {
   }
 
   return newState;
+}
+
+function normaliseData (data) {
+  return data.reduce((acc,item) => {
+    acc[item._id] = item;
+    return acc;
+  }, {});
+}
+
+export function getTopArticles (state, num) {
+  return Object.keys(state.articles.byId).reduce(function (acc, id) {
+    return acc.concat(state.articles.byId[id]);
+  }, []).sort(function (a, b) {
+    return b.votes - a.votes;
+  }).slice(0, num);
 }
 
 export default articlesReducer;

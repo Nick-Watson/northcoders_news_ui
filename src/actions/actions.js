@@ -3,7 +3,11 @@ import axios from 'axios';
 import {ROOT} from '../../config';
 
 // action creator for fetching articles
-export function fetchArticles () {
+export function fetchArticles (topic) {
+  let url = `${ROOT}`;
+  if (topic) url += `/topics/${topic}/articles`;
+  else url += '/articles';
+
   return function (dispatch) {
     // thunk action
       // wraps async function
@@ -13,7 +17,7 @@ export function fetchArticles () {
         // 1: make request - need spinner while waiting?
         // 2: succcessful response
         // 3: error
-      .get(`${ROOT}/articles`)
+      .get(url)
       .then(res => {
         // do something with response
         dispatch(fetchArticlesSuccess(res.data.articles));
@@ -57,7 +61,6 @@ export function fetchTopics () {
         // 3: error
       .get(`${ROOT}/topics`)
       .then(res => {
-        console.log('res', res)
         // do something with response
         dispatch(fetchTopicsSuccess(res.data.topics));
       })
@@ -84,6 +87,48 @@ export function fetchTopicsSuccess (topics) {
 export function fetchTopicsError (err) {
   return {
     type: types.FETCH_TOPICS_ERROR,
+    data: err
+  };
+}
+
+export function fetchArticleComments (id) {
+    return function (dispatch) {
+    // thunk action
+      // wraps async function
+    dispatch(fetchArticleCommentsRequest());
+    axios
+      // 3 stages of API request
+        // 1: make request - need spinner while waiting?
+        // 2: succcessful response
+        // 3: error
+      .get(`${ROOT}/articles/${id}/comments`)
+      .then(res => {
+        // do something with response
+        dispatch(fetchArticleCommentsSuccess(res.data.comments));
+      })
+      .catch(err => {
+        // do something when error
+        dispatch(fetchArticleCommentsError(err));
+      });
+  };
+}
+
+export function fetchArticleCommentsRequest () {
+  return {
+    type: types.FETCH_COMMENTS_REQUEST
+  };
+}
+
+export function fetchArticleCommentsSuccess (comments) {
+  return {
+    type: types.FETCH_COMMENTS_SUCCESS,
+    data: comments
+  };
+}
+
+export function fetchArticleCommentsError (err) {
+  return {
+    type: types.FETCH_COMMENTS_ERROR,
     data: err
   };
 }

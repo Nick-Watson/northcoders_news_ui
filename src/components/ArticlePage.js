@@ -1,14 +1,47 @@
 import React from 'react';
-// import  from '';
-// import  from '';
-import '../css/bulma.css';
+import { connect } from 'react-redux';
+import { Component } from 'react';
+import {fetchArticleComments} from '../actions/actions';
+import {getTopComments} from '../reducer/comments.reducer';
 
-function ArticlePage (props) {
-    return (
-        <div className='container'>
-            <h1>{props.params.article_ID}</h1>
-        </div>
-    );
+import Article from './Article';
+
+class ArticlePage extends Component {
+
+    componentDidMount () {
+    this.props.fetchComments(this.props.params.articleId);
+    }
+    render() {
+        if (this.props.loading) return (<p>Loading..</p>);
+        else {
+            const article = this.props.byId[this.props.params.articleId];
+            return (
+                <div id="ArticlePage">
+                    <Article 
+                    {...article}
+                    comments={this.props.comments}
+                    />
+                    
+                </div>
+            )
+        }
+    }
 }
 
-export default ArticlePage;
+function mapStateToProps (state) {
+    return {
+        loading: state.articles.loading,
+        byId: state.articles.byId,
+        comments: getTopComments(state)
+    };
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    fetchComments: function (id) {
+      dispatch(fetchArticleComments(id));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);
