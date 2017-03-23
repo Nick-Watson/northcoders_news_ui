@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Component } from 'react';
 import {fetchArticleComments} from '../actions/actions';
 import {getTopComments} from '../reducer/comments.reducer';
+import {Link} from 'react-router';
+
 
 import Article from './Article';
 
@@ -11,7 +13,7 @@ class ArticlePage extends Component {
     componentDidMount () {
     this.props.fetchComments(this.props.params.articleId);
     }
-    render() {
+    render () {
         if (this.props.loading) return (<p>Loading..</p>);
         else {
             const article = this.props.byId[this.props.params.articleId];
@@ -19,11 +21,12 @@ class ArticlePage extends Component {
                 <div id="ArticlePage">
                     <Article 
                     {...article}
-                    comments={this.props.comments}
                     />
-                    
+
+                <Link to={'/' +this.props.params.topic + '/' + this.props.params.articleId + '/comments'}>Comments</Link>
+                {this.props.children}
                 </div>
-            )
+            );
         }
     }
 }

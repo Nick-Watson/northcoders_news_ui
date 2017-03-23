@@ -1,3 +1,7 @@
+* {
+    /*border: 1px solid black;*/
+}
+
 #author {
     margin-left: 10px;
 }
@@ -13,4 +17,16 @@
 #ArticleList {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.votes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*border: 1px solid black;*/
+}
+
+#vote-number {
+    text-align: center;
+    vertical-align: middle;
 }

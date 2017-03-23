@@ -3,7 +3,7 @@ import React from 'react';
 // import  from '';
 import '../css/main.css';
 
-function commentCard(props) {
+function commentCard (props) {
     return (
         <article className="message is-warning is-small">
             <div className="message-header">
@@ -11,7 +11,7 @@ function commentCard(props) {
                     {props.votes}</span><span id='author'>{props.created_by}</span></p>
             </div>
             <div className="message-body">
-                {props.body}
+                <p>{props.body}</p>
             </div>
         </article>
     );

@@ -12,6 +12,7 @@ import App from './components/App';
 import FrontPage from './components/FrontPage';
 import reducer from './reducer/index.reducer';
 import ArticlePage from './components/ArticlePage';
+import CommentsList from './components/CommentsList';
 
 const logger = createLogger()
 
@@ -25,7 +26,7 @@ ReactDOM.render(
         <IndexRoute component={FrontPage} />
         <Route path='/:topic' component={FrontPage} />
         <Route path='/:topic/:articleId' component={ArticlePage}>
-          {/*<Route path='/:topic/:articleId/comments' component={CommentPage}*/}
+          <Route path='/:topic/:articleId/comments' component={CommentsList} />
         </Route>
       </Route>
     </Router>

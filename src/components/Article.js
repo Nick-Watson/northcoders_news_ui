@@ -12,7 +12,6 @@ function Article (props) {
                     {props.body}
                 </div>
             </article>
-            <CommentsList comments={props.comments} />
         </div>
     );
 }
@@ -20,7 +19,6 @@ function Article (props) {
 Article.propTypes = {
     title: React.PropTypes.string.isRequired,
     body: React.PropTypes.string.isRequired,
-    comments: React.PropTypes.string.isRequired
 };
 
 export default Article;
