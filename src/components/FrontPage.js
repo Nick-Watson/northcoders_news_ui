@@ -1,19 +1,22 @@
 import React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchArticles } from '../actions/actions';
 import ArticleList from './ArticleList';
 import {getTopArticles} from '../reducer/articles.reducer';
+import { sendVote } from '../actions/actions';
 
-const FrontPage = React.createClass({
+class FrontPage extends Component {
+  
   render () {
-    if (this.props.loading) return <p>Loading...</p>
+    if (this.props.loading) return <p>Loading...</p>;
     return (
       <div id='FrontPage'>
-        <ArticleList articles={this.props.articles} />
+        <ArticleList articles={this.props.articles} sendVote={this.props.sendVote}/>
       </div>
     );
   }
-});
+}
 
 FrontPage.propTypes = {
   loading: React.PropTypes.bool.isRequired,
@@ -24,7 +27,11 @@ function mapDispatchToProps (dispatch) {
   return {
     getArticles: () => {
       dispatch(fetchArticles());
+    },
+    sendVote: function (articleId, direction) {
+      dispatch(sendVote(articleId, direction));
     }
+
   };
 }
 

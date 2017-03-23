@@ -1,20 +1,39 @@
 import React from 'react';
-// import  from '';
-// import  from '';
 import '../css/main.css';
 
-function commentCard (props) {
-    return (
-        <article className="message is-warning is-small">
-            <div className="message-header">
-                <p><span><i className="fa fa-arrow-up" aria-hidden="true"></i>
-                    {props.votes}</span><span id='author'>{props.created_by}</span></p>
-            </div>
-            <div className="message-body">
-                <p>{props.body}</p>
-            </div>
-        </article>
-    );
-}
+const CommentCard = function (props) {
 
-export default commentCard;
+    function upVote() {
+        props.sendCommentVote(props._id, 'up');
+    }
+
+    function downVote() {
+        props.sendCommentVote(props._id, 'down');
+    }
+
+    return (
+        <div className='box'>
+
+            <article className='media'>
+                <div className='media-left'>
+                    <div className="votes-container">
+                        <div>
+                            <div><i onClick={upVote} className="fa fa-arrow-up" aria-hidden="true"></i></div>
+                            <div id='vote-number'>{props.votes}</div>
+                            <div><i onClick={downVote} className="fa fa-arrow-down" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div className='media-content'>
+                    <div className='content'>
+                        {props.created_by}
+                    </div>
+                    {props.body}
+                </div>
+            </article>
+
+        </div>
+    );
+};
+
+export default CommentCard;

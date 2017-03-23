@@ -1,0 +1,63 @@
+import { expect } from 'chai';
+import articlesReducer from '../src/reducer/articles.reducer.js';
+import commentsReducer from '../src/reducer/comments.reducer.js';
+import * as actions from '../src/actions/actions';
+
+describe('sendVote', () => {
+    const article = {data : { _id: 123, votes: 5 }};
+    const action = actions.sendVoteSuccess(article);
+    const initialState = {
+        byId: {
+            123: { _id: 123, votes: 2 }
+        },
+        loading: true
+    };
+
+    it('updates vote of article in the state', () => {
+        let actual = articlesReducer(initialState, action);
+        let expected = {
+            byId: {
+                123: { _id: 123, votes: 5 }
+            },
+            loading: false
+        };
+
+        expect(actual).to.eql(expected);
+    });
+
+    it('does not mutate the original state', () => {
+        const newState = articlesReducer(initialState, action);
+        expect(newState).to.not.equal(initialState);
+    }); 
+
+});
+
+describe('sendCommentVote', () => {
+    const comment = { _id: 123};
+    const action = actions.sendCommentVoteSuccess(comment._id, 'down');
+    const initialState = {
+        comments: {
+            123: { votes: 2 }
+        },
+        loading: true
+    };
+
+
+    it('updates vote of article in the state', () => {
+        let actual = commentsReducer(initialState, action);
+        let expected = {
+            comments: {
+                123: { votes: 1  }
+            },
+            loading: false
+        };
+
+        expect(actual).to.eql(expected);
+    });
+
+    it('does not mutate the original state', () => {
+        const newState = commentsReducer(initialState, action);
+        expect(newState).to.not.equal(initialState);
+    }); 
+
+});

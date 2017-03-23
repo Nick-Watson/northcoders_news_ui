@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Component } from 'react';
+// import {Link} from 'react-router';
 import {fetchArticleComments} from '../actions/actions';
 import {getTopComments} from '../reducer/comments.reducer';
-import {Link} from 'react-router';
-
-
 import Article from './Article';
 
 class ArticlePage extends Component {
@@ -13,6 +11,7 @@ class ArticlePage extends Component {
     componentDidMount () {
     this.props.fetchComments(this.props.params.articleId);
     }
+
     render () {
         if (this.props.loading) return (<p>Loading..</p>);
         else {
@@ -22,13 +21,14 @@ class ArticlePage extends Component {
                     <Article 
                     {...article}
                     />
-
-                <Link to={'/' +this.props.params.topic + '/' + this.props.params.articleId + '/comments'}>Comments</Link>
-                {this.props.children}
+{/*
+                    <Link to={'/' +this.props.params.topic + '/' + this.props.params.articleId + '/comments'}>Comments</Link>*/}
+                    {this.props.children}
                 </div>
             );
         }
     }
+
 }
 
 function mapStateToProps (state) {

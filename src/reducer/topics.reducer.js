@@ -1,6 +1,5 @@
 import * as types from '../actions/types';
 
-// good template for data fetching
 const initialState = {
   topics: [],
   loading: false,

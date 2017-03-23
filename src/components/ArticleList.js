@@ -1,7 +1,7 @@
 import React from 'react';
 import ArticleCard from './ArticleCard';
 
-function ArticleList (props) {
+const ArticleList = function (props) {
     return (
         <div id="ArticleList">
             {props.articles.map((article, i) => {
@@ -11,7 +11,8 @@ function ArticleList (props) {
                     votes={article.votes} 
                     id={article._id}
                     topic={article.belongs_to}
-                />}
+                    sendVote={props.sendVote}
+                />;}
             )}
         </div>
     );
@@ -19,6 +20,6 @@ function ArticleList (props) {
 
 ArticleList.propTypes = {
     articles: React.PropTypes.array.isRequired
-}
+};
 
 export default ArticleList;

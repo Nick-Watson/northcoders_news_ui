@@ -26,6 +26,20 @@ function articlesReducer (prevState = initialState, action) {
     newState.loading = false;
   }
 
+  if (action.type === types.SEND_VOTE_SUCCESS) {
+    const id = action.data._id;
+    const newArticle = action.data;
+    
+    newState.byId[id] = Object.assign({}, newState.byId[id]);
+    newState.byId[id] = newArticle;
+    newState.loading = false;
+  }
+
+  if (action.type === types.SEND_VOTE_ERROR) {
+    newState.error = action.data;
+    newState.loading = false;
+  }
+
   return newState;
 }
 

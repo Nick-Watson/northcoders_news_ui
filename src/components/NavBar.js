@@ -1,16 +1,18 @@
 import React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTopics } from '../actions/actions';
 import { Link } from 'react-router';
 import '../css/bulma.css';
 
-const NavBar = React.createClass({
+class NavBar extends Component {
+
   componentDidMount () {
     this.props.getTopics();
-  },
-  render: function () {
+  }
+
+  render () {
     return (
-      <div>
         <nav className='tabs is-medium is-right'>
           <ul>
             <li>
@@ -25,10 +27,10 @@ const NavBar = React.createClass({
               )}
           </ul>
         </nav>
-      </div>
     );
   }
-});
+
+}
 
 function mapDispatchToProps (dispatch) {
   return {

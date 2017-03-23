@@ -1,23 +1,25 @@
 import React from 'react';
+import { Component } from 'react';
 import {connect} from 'react-redux';
 import {fetchArticles} from '../actions/actions';
 import NavBar from './NavBar';
 import '../css/bulma.css';
 
-
-const App = React.createClass({
+class App extends Component {
+  
   componentDidMount () {
     this.props.fetchArticles(this.props.params.topic);
-  },
+  }
   componentWillReceiveProps (nextProps) {
     if (nextProps.params.topic !== this.props.params.topic) {
       this.props.fetchArticles(nextProps.params.topic);
     }
-  },
-  render: function () {
+  }
+  
+  render () {
     return (
       <div>
-        <section className="hero is-primary">
+        <section className="hero is-danger is-bold">
           <div className="hero-body">
             <div className="container">
               <h1 className="title">
@@ -28,22 +30,22 @@ const App = React.createClass({
               </h2>
             </div>
           </div>
-        </section>
         <NavBar fetchArticles={this.props.fetchArticles} />
+        </section>
         <div className="container">
         {this.props.children}
         </div>
       </div>
     );
   }
-});
+}
 
 function mapDispatchToProps (dispatch) {
   return {
     fetchArticles: function (topic) {
       dispatch(fetchArticles(topic));
     }
-  }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(App);

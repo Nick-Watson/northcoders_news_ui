@@ -14,7 +14,7 @@ import reducer from './reducer/index.reducer';
 import ArticlePage from './components/ArticlePage';
 import CommentsList from './components/CommentsList';
 
-const logger = createLogger()
+const logger = createLogger();
 
 // second argument takes middleware
 const store = createStore(reducer, applyMiddleware(thunk, logger));

@@ -132,3 +132,87 @@ export function fetchArticleCommentsError (err) {
     data: err
   };
 }
+
+export function sendVote (articleId, direction) {
+  return function (dispatch) {
+      // thunk action
+        // wraps async function
+      dispatch(sendVoteRequest());
+      axios
+        // 3 stages of API request
+          // 1: make request - need spinner while waiting?
+          // 2: succcessful response
+          // 3: error
+        .put(`${ROOT}/articles/${articleId}?vote=${direction}`)
+        .then(res => {
+          // do something with response
+          dispatch(sendVoteSuccess(res));
+        })
+        .catch(err => {
+          // do something when error
+          dispatch(sendVoteError(err));
+        });
+    };
+}
+
+export function sendVoteRequest () {
+  return {
+    type: types.SEND_VOTE_REQUEST
+  };
+}
+
+export function sendVoteSuccess (article) {
+  return {
+    type: types.SEND_VOTE_SUCCESS,
+    data: article.data
+  };
+}
+
+export function sendVoteError (err) {
+  return {
+    type: types.SEND_VOTE_ERROR,
+    data: err
+  };
+}
+
+export function sendCommentVote (commentId, direction) {
+  return function (dispatch) {
+      // thunk action
+        // wraps async function
+      dispatch(sendCommentVoteRequest());
+      axios
+        // 3 stages of API request
+          // 1: make request - need spinner while waiting?
+          // 2: succcessful response
+          // 3: error
+        .put(`${ROOT}/comments/${commentId}?vote=${direction}`)
+        .then(() => {
+          // do something with response
+          dispatch(sendCommentVoteSuccess(commentId,direction));
+        })
+        .catch(err => {
+          // do something when error
+          dispatch(sendCommentVoteError(err));
+        });
+    };
+}
+
+export function sendCommentVoteRequest () {
+  return {
+    type: types.SEND_COMMENT_VOTE_REQUEST
+  };
+}
+
+export function sendCommentVoteSuccess (commentId,direction) {
+  return {
+    type: types.SEND_COMMENT_VOTE_SUCCESS,
+    data: {direction:direction, commentId:commentId}
+  };
+}
+
+export function sendCommentVoteError (err) {
+  return {
+    type: types.SEND_COMMENT_VOTE_ERROR,
+    data: err
+  };
+}

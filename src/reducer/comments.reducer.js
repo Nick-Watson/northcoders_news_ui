@@ -1,7 +1,7 @@
 import * as types from '../actions/types';
 
 const initialState = {
-  comments: [],
+  comments: {},
   loading: false,
   error: null
 };
@@ -20,6 +20,16 @@ function commentsReducer (prevState = initialState, action) {
 
   if (action.type === types.FETCH_COMMENTS_ERROR) {
     newState.error = action.data;
+    newState.loading = false;
+  }
+
+  if (action.type === types.SEND_COMMENT_VOTE_SUCCESS) {
+    const direction = action.data.direction;
+    const comment = action.data.commentId;
+    
+    newState.comments[comment] = Object.assign({}, newState.comments[comment]);
+    if (direction === 'up') newState.comments[comment].votes++;
+    if (direction === 'down') newState.comments[comment].votes--;
     newState.loading = false;
   }
 
