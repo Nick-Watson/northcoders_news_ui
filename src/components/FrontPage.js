@@ -12,7 +12,7 @@ class FrontPage extends Component {
     if (this.props.loading) return <p>Loading...</p>;
     return (
       <div id='FrontPage'>
-        <ArticleList articles={this.props.articles} sendVote={this.props.sendVote}/>
+        <ArticleList articles={this.props.articles} sendVote={this.props.sendVote} title={this.props.params.topic}/>
       </div>
     );
   }

@@ -12,8 +12,9 @@ function CommentForm (props) {
                     type='text'
                     placeholder='What you sayin...?'
                     onChange={handleChange}
+                    value={props.textInput}
                 />
-                <input className='inputsubmit' type='submit' value='Post' />
+                <input className='inputsubmit' id='button' type='submit' value='Post' />
             </form>
         </div>
     );

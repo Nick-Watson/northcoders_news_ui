@@ -50,7 +50,21 @@
 }
 
 
-/*#article-card-title {
-    text-decoration: none;
+#delete-button {
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+#heading{
     color: #ff3860;
-}*/
+}
+
+ #button {
+     background-color: #ff3860;
+     color: white;
+     border-radius: 10px;
+     /*width: 50px;*/
+     margin-left: 10px;
+ }
+

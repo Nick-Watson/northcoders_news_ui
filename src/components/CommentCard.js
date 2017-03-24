@@ -18,7 +18,7 @@ const CommentCard = function (props) {
         props.deleteComment(props._id);
     }
 
-   const canDelete = props.created_by === 'northcoder' ? <button onClick={deleteComment}>Delete</button> : '';
+   const canDelete = props.created_by === 'northcoder' ? <button onClick={deleteComment} id='button'>Delete</button> : '';
     return (
         <div className='box'>
 
@@ -34,13 +34,13 @@ const CommentCard = function (props) {
                 </div>
                 <div className='media-content'>
                     <div className='content'>
-                        {props.created_by}
+                        <h4 id='heading'>{props.created_by}</h4>
                     </div>
                     {props.body}
-                    {canDelete}
                 </div>
             </article>
 
+            <div id='delete-button'>{canDelete}</div>
         </div>
     );
 };

@@ -47,6 +47,7 @@ function commentsReducer (prevState = initialState, action) {
     newState.comments = Object.assign({}, newState.comments);
     newState.comments[action.data._id] = action.data;
     newState.loading = false;
+    newState.textInput = '';
   }
 
   if (action.type === types.DELETE_COMMENT_REQUEST) {
