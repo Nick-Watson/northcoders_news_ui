@@ -49,6 +49,16 @@ function commentsReducer (prevState = initialState, action) {
     newState.loading = false;
   }
 
+  if (action.type === types.DELETE_COMMENT_REQUEST) {
+    newState.loading = true;
+  }
+
+  if (action.type === types.DELETE_COMMENT_SUCCESS) {
+    newState.comments = Object.assign({}, newState.comments);
+    delete newState.comments[action.data];
+    newState.loading = false;
+  }
+
   return newState;
 }
 

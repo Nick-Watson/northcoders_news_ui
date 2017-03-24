@@ -93,3 +93,20 @@ describe('postComment', () => {
     }); 
     
 });
+
+describe('deleteComment', () => {
+    const initalState = {comments:{'1':{}}, loading: true};
+    const action = actions.deleteCommentSuccess('1');
+    
+    it('deletes comment from state', () => {
+        let actual = commentsReducer(initalState, action) ;
+        let expected = {comments:{}, loading: false} ;
+        expect(actual).to.eql(expected);
+    });
+
+    it('does not mutate the original state', () => {
+        const newState = commentsReducer(initalState, action);
+        expect(newState).to.not.equal(initalState);
+    }); 
+    
+});

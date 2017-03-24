@@ -253,15 +253,59 @@ export function postCommentRequest () {
     type: types.POST_COMMENT_REQUEST
   };
 }
+
 export function postCommentSuccess (res) {
   return {
     type: types.POST_COMMENT_SUCCESS,
     data: res.data.comment
   };
 }
+
 export function postCommentError (err) {
   return {
-    type: types.POST_COMMENT_SUCCESS,
+    type: types.POST_COMMENT_ERROR,
+    data: err
+  };
+}
+
+export function deleteComment (commentId) {
+  return function (dispatch) {
+      // thunk action
+        // wraps async function
+      dispatch(deleteCommentRequest());
+      axios
+        // 3 stages of API request
+          // 1: make request - need spinner while waiting?
+          // 2: succcessful response
+          // 3: error
+        .delete(`${ROOT}/comments/${commentId}`)
+        .then(() => {
+          // do something with response
+          dispatch(deleteCommentSuccess(commentId));
+        })
+        .catch(err => {
+          // do something when error
+          dispatch(deleteCommentError(err));
+        });
+    };
+}
+
+export function deleteCommentRequest () {
+  return {
+    type: types.DELETE_COMMENT_REQUEST
+  };
+}
+
+export function deleteCommentSuccess (commentId) {
+  return {
+    type: types.DELETE_COMMENT_SUCCESS,
+    data: commentId
+  };
+}
+
+export function deleteCommentError (err) {
+  return {
+    type: types.DELETE_COMMENT_ERROR,
     data: err
   };
 }

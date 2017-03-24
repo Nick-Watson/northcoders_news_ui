@@ -1,16 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {deleteComment} from '../actions/actions';
+
 import '../css/main.css';
 
 const CommentCard = function (props) {
 
-    function upVote() {
+    function upVote () {
         props.sendCommentVote(props._id, 'up');
     }
 
-    function downVote() {
+    function downVote () {
         props.sendCommentVote(props._id, 'down');
     }
 
+    function deleteComment () {
+        props.deleteComment(props._id);
+    }
+
+   const canDelete = props.created_by === 'northcoder' ? <button onClick={deleteComment}>Delete</button> : '';
     return (
         <div className='box'>
 
@@ -29,6 +37,7 @@ const CommentCard = function (props) {
                         {props.created_by}
                     </div>
                     {props.body}
+                    {canDelete}
                 </div>
             </article>
 
@@ -36,4 +45,12 @@ const CommentCard = function (props) {
     );
 };
 
-export default CommentCard;
+function mapDispatchToProps (dispatch) {
+  return {
+    deleteComment: function (commentId) {
+        dispatch(deleteComment(commentId));
+    }
+  };
+}
+
+export default connect(null, mapDispatchToProps)(CommentCard);
