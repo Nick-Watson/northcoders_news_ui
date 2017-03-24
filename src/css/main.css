@@ -64,7 +64,12 @@
      background-color: #ff3860;
      color: white;
      border-radius: 10px;
-     /*width: 50px;*/
      margin-left: 10px;
+     width: 60px;
+     height: 30px;
+ }
+
+ .comment-list {
+     margin-bottom: 20px;
  }
 

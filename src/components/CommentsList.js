@@ -11,7 +11,7 @@ class CommentsList extends Component {
 
     render () {
         return (
-            <div className=''>
+            <div className='comment-list'>
                 <CommentForm articleId={this.props.params.articleId}/>
                 {this.props.comments.map((comment, i) => {
                     return (
