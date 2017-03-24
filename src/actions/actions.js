@@ -216,3 +216,53 @@ export function sendCommentVoteError (err) {
     data: err
   };
 }
+
+export function updateTextInput (str) {
+  return {
+    type: types.UPDATE_TEXT_INPUT,
+    data: str
+  };
+}
+
+export function postComment (articleId, comment) {
+  return function (dispatch) {
+      // thunk action
+        // wraps async function
+      dispatch(postCommentRequest());
+      axios
+        // 3 stages of API request
+          // 1: make request - need spinner while waiting?
+          // 2: succcessful response
+          // 3: error
+        .post(`${ROOT}/articles/${articleId}/comments`,{
+          'comment': comment
+        })
+        .then((res) => {
+          // do something with response
+          dispatch(postCommentSuccess(res));
+        })
+        .catch(err => {
+          // do something when error
+          dispatch(postCommentError(err));
+        });
+    };
+}
+
+export function postCommentRequest () {
+  return {
+    type: types.POST_COMMENT_REQUEST
+  };
+}
+export function postCommentSuccess (res) {
+  return {
+    type: types.POST_COMMENT_SUCCESS,
+    data: res.data.comment
+  };
+}
+export function postCommentError (err) {
+  return {
+    type: types.POST_COMMENT_SUCCESS,
+    data: err
+  };
+}
+

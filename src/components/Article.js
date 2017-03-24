@@ -11,7 +11,7 @@ const Article = function (props) {
                 <div className="section">
                     <h1 id='title' className="title is-2">{props.title}</h1>
                     {props.body}
-                <p><Link to={'/' + props.belongs_to + '/' + props._id + '/comments'}>Comments</Link></p>
+                <p id='comment-link'><Link to={'/' + props.belongs_to + '/' + props._id + '/comments'}>Comments</Link></p>
                 </div>
             </article>
         </div>

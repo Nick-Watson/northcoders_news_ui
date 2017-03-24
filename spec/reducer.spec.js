@@ -61,3 +61,35 @@ describe('sendCommentVote', () => {
     }); 
 
 });
+
+describe('updateTextInput', () => {
+    const action = actions.updateTextInput('s');
+    const action2 = actions.updateTextInput('st');
+    const initalState = {
+        textInput : ''
+    };
+
+    it('it updates textInput in the state', () => {
+        const expected = {textInput: 'st'};
+        const actual = commentsReducer(initalState, action);
+        const actual2 = commentsReducer(actual, action2);
+        expect(actual2).to.eql(expected);
+    });
+});
+
+describe('postComment', () => {
+    const initalState = {comments:{}, loading: true};
+    const action = actions.postCommentSuccess({data:{comment: {_id:'123', body: 'hello'}}});
+    
+    it('updates the comments with the new comment', () => {
+        let actual = commentsReducer(initalState, action) ;
+        let expected = {comments:{'123' : {_id:'123', body: 'hello'}}, loading: false} ;
+        expect(actual).to.eql(expected);
+    });
+
+    it('does not mutate the original state', () => {
+        const newState = commentsReducer(initalState, action);
+        expect(newState).to.not.equal(initalState);
+    }); 
+    
+});

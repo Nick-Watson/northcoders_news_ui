@@ -2,6 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   comments: {},
+  textInput: '',
   loading: false,
   error: null
 };
@@ -30,6 +31,21 @@ function commentsReducer (prevState = initialState, action) {
     newState.comments[comment] = Object.assign({}, newState.comments[comment]);
     if (direction === 'up') newState.comments[comment].votes++;
     if (direction === 'down') newState.comments[comment].votes--;
+    newState.loading = false;
+  }
+
+  if (action.type === types.UPDATE_TEXT_INPUT) {
+    newState.textInput = action.data;
+  }
+
+  if (action.type === types.POST_COMMENT_REQUEST) {
+    newState.loading = true;
+  }
+
+  if (action.type === types.POST_COMMENT_SUCCESS) {
+    console.log(action.data);
+    newState.comments = Object.assign({}, newState.comments);
+    newState.comments[action.data._id] = action.data;
     newState.loading = false;
   }
 

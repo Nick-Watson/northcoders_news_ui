@@ -21,8 +21,6 @@ class ArticlePage extends Component {
                     <Article 
                     {...article}
                     />
-{/*
-                    <Link to={'/' +this.props.params.topic + '/' + this.props.params.articleId + '/comments'}>Comments</Link>*/}
                     {this.props.children}
                 </div>
             );

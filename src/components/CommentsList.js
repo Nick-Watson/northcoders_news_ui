@@ -12,7 +12,7 @@ class CommentsList extends Component {
     render () {
         return (
             <div className=''>
-                <CommentForm/>
+                <CommentForm articleId={this.props.params.articleId}/>
                 {this.props.comments.map((comment, i) => {
                     return (
                         <CommentCard 
