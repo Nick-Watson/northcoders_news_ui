@@ -22,21 +22,22 @@
 .votes-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
 }
 
 #vote-number {
     text-align: center;
     line-height: 100%;
-    margin-bottom: 5px;
-    /*border: 1px solid black;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
 
 }
 
 .votes-container-comments {
     display: flex;
     flex-direction: row;
-    /*border: 1px solid black;*/
 }
 
 .form {
@@ -52,12 +53,19 @@
 
 #delete-button {
     display: flex;
-    flex-direction: row-reverse;
-    
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
+    text-decoration-line: none;    
 }
 
 #heading{
     color: #ff3860;
+    margin-bottom: 15px;
+}
+#topic-heading{
+    color: #ff3860;
+    margin-left: 20px;
 }
 
  #button {
@@ -67,9 +75,49 @@
      margin-left: 10px;
      width: 60px;
      height: 30px;
+     outline: 0;
+     cursor: pointer;
  }
 
  .comment-list {
      margin-bottom: 20px;
  }
 
+.spinner {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    margin-top: 100px;
+    color: #ff3860;
+}
+
+#text-box {
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    width: 300px;
+    height: 50px;
+}
+
+#article-card-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: yellow;
+}
+
+#flex-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#flex-centered-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#red-icon {
+  color: #ff3860;
+  cursor: pointer;
+  }

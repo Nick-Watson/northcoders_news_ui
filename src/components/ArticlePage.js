@@ -13,14 +13,14 @@ class ArticlePage extends Component {
     }
 
     render () {
-        if (this.props.loading) return (<p>Loading..</p>);
+        if (this.props.loading) return (<div className='spinner'><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i><span className="sr-only">Loading...</span></div>);
         else {
             const article = this.props.byId[this.props.params.articleId];
             return (
                 <div id="ArticlePage">
                     <Article 
                     {...article}
-                    />
+                    comments={this.props.comments}/>
                     {this.props.children}
                 </div>
             );

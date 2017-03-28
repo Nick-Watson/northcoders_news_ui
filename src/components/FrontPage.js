@@ -9,7 +9,7 @@ import { sendVote } from '../actions/actions';
 class FrontPage extends Component {
   
   render () {
-    if (this.props.loading) return <p>Loading...</p>;
+    if (this.props.loading) return <div className='spinner'><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i><span className="sr-only">Loading...</span></div>;
     return (
       <div id='FrontPage'>
         <ArticleList articles={this.props.articles} sendVote={this.props.sendVote} title={this.props.params.topic}/>

@@ -10,6 +10,7 @@ import CommentForm from './CommentForm';
 class CommentsList extends Component {
 
     render () {
+        if (this.props.loading) return <div className='spinner'><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i><span className="sr-only">Loading...</span></div>;
         return (
             <div className='comment-list'>
                 <CommentForm articleId={this.props.params.articleId}/>
@@ -30,7 +31,7 @@ class CommentsList extends Component {
 
 function mapStateToProps (state) {
     return {
-        loading: state.articles.loading,
+        loading: state.comments.loading,
         byId: state.articles.byId,
         comments: getTopComments(state)
     };

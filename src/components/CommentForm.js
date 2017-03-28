@@ -9,12 +9,13 @@ function CommentForm (props) {
         <div className=''>
             <form className='form' onSubmit={handleSubmit}>
                 <textarea
+                    id='text-box'
                     type='text'
-                    placeholder='What you sayin...?'
+                    placeholder=' What do you think?'
                     onChange={handleChange}
                     value={props.textInput}
                 />
-                <input className='inputsubmit' id='button' type='submit' value='Post' />
+                <input id='button' type='submit' value='Post' />
             </form>
         </div>
     );
@@ -25,7 +26,7 @@ function handleChange (e) {
 
 function handleSubmit (e) {
     e.preventDefault();
-    props.postComment(props.articleId, props.textInput);
+    if (props.textInput) props.postComment(props.articleId, props.textInput);
 }
 
 }

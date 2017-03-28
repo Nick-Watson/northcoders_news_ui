@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {deleteComment} from '../actions/actions';
+import { deleteComment } from '../actions/actions';
 
 import '../css/main.css';
 
@@ -18,39 +18,48 @@ const CommentCard = function (props) {
         props.deleteComment(props._id);
     }
 
-   const canDelete = props.created_by === 'northcoder' ? <button onClick={deleteComment} id='button'>Delete</button> : '';
+    const canDelete = props.created_by === 'northcoder' ? <i onClick={deleteComment} className="fa fa-trash-o fa-2x" aria-hidden="true" id='red-icon'></i> : '';
+
     return (
         <div className='box'>
-
-            <article className='media'>
-                <div className='media-left'>
+           
+            <div className="columns is-mobile">
+                <div className="column is-1" id='flex-centered'>
                     <div className="votes-container">
-                        <div>
-                            <div><i onClick={upVote} className="fa fa-arrow-up" aria-hidden="true"></i></div>
-                            <div id='vote-number'>{props.votes}</div>
-                            <div><i onClick={downVote} className="fa fa-arrow-down" aria-hidden="true"></i></div>
-                        </div>
+                        <i onClick={upVote} className="fa fa-arrow-up" aria-hidden="true"></i>
+                        <p id='vote-number'>{props.votes}</p>
+                        <i onClick={downVote} className="fa fa-arrow-down" aria-hidden="true"></i>
                     </div>
                 </div>
-                <div className='media-content'>
-                    <div className='content'>
-                        <h4 id='heading'>{props.created_by}</h4>
-                    </div>
-                    {props.body}
+                <div className="column" id='flex-centered'>
+                    <h4 id='heading'>{props.created_by}</h4>
+                    <div>{props.body}</div>
                 </div>
-            </article>
+                <div className="column is-1" id='flex-centered'>
+                    {canDelete}
+                </div>
+            </div>
 
-            <div id='delete-button'>{canDelete}</div>
         </div>
     );
 };
 
 function mapDispatchToProps (dispatch) {
-  return {
-    deleteComment: function (commentId) {
-        dispatch(deleteComment(commentId));
-    }
-  };
+    return {
+        deleteComment: function (commentId) {
+            dispatch(deleteComment(commentId));
+        }
+    };
 }
 
+CommentCard.propTypes = {
+    deleteComment: React.PropTypes.func.isRequired,
+    _id: React.PropTypes.string.isRequired,
+    created_by: React.PropTypes.string.isRequired,
+    votes: React.PropTypes.number.isRequired,
+    body: React.PropTypes.string.isRequired,
+};
+
 export default connect(null, mapDispatchToProps)(CommentCard);
+
+

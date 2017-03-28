@@ -6,12 +6,12 @@ import '../css/font-awesome.css';
 
 const Article = function (props) {
     return (
-        <div className=''>
-            <article className="message">
+        <div className='box'>
+            <article className="media">
                 <div className="section">
                     <h1 id='title' className="title is-2">{props.title}</h1>
                     {props.body}
-                <p id='comment-link'><Link to={'/' + props.belongs_to + '/' + props._id + '/comments'}>Comments</Link></p>
+                <p id='comment-link'><Link to={'/' + props.belongs_to + '/' + props._id + '/comments'}>{'' + props.comments.length + ' Comments'}</Link></p>
                 </div>
             </article>
         </div>
@@ -19,8 +19,12 @@ const Article = function (props) {
 };
 
 Article.propTypes = {
-    title: React.PropTypes.string.isRequired,
-    body: React.PropTypes.string.isRequired,
+    title: React.PropTypes.string,
+    body: React.PropTypes.string,
+    belongs_to: React.PropTypes.string,
+    _id: React.PropTypes.string,
+    comments: React.PropTypes.array,
 };
 
 export default Article;
+
