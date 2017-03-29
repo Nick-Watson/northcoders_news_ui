@@ -13,16 +13,16 @@ class NavBar extends Component {
 
   render () {
     return (
-        <nav className='tabs is-medium is-right'>
+        <nav className='tabs is-medium is-right' id='nav'>
           <ul>
             <li>
-              <Link to='/'>All</Link>
+              <Link to='/' className='nav-category'>All</Link>
             </li>
             {this.props
               .topics
               .map((topic, i) =>
                 <li key={i}>
-                  <Link key={i} to={'/' + topic.slug}>{topic.title}</Link>
+                  <Link className='nav-category' key={i} to={'/' + topic.slug}>{topic.title}</Link>
                 </li>
               )}
           </ul>

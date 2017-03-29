@@ -27,7 +27,7 @@ const ArticleCard = function (props) {
         </div>
         <div className="column" id='flex-centered-between'>
           <Link to={`/${props.topic}/${props.id}`} id='is-title'><h4 className="title is-4">{props.title}</h4></Link>
-          <Link to={`/${props.topic}/${props.id}/comments`}>{'Comments'}</Link>
+          <Link to={`/${props.topic}/${props.id}/comments`}>{'comments'}</Link>
         </div>
       </div>
 

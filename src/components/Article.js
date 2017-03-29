@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 
 import '../css/font-awesome.css';
 
@@ -7,13 +7,20 @@ import '../css/font-awesome.css';
 const Article = function (props) {
     return (
         <div className='box'>
-            <article className="media">
-                <div className="section">
-                    <h1 id='title' className="title is-2">{props.title}</h1>
-                    {props.body}
-                <p id='comment-link'><Link to={'/' + props.belongs_to + '/' + props._id + '/comments'}>{'' + props.comments.length + ' Comments'}</Link></p>
+            <section className="hero">
+            <div className="hero-body">
+                <div className="container">
+                    <h1 className="title is-2">
+                        {props.title}
+                    </h1>
+                    <p>{'Submitted by ' + props.created_by}</p>
+                    <h2 className="subtitle" id='article-body'>
+                        <div >{props.body}</div>
+                    </h2>
+                    <p id='comment-link' className='level-left'><Link to={'/' + props.belongs_to + '/' + props._id + '/comments'}>{'Show ' + props.comments.length + ' comments'}</Link></p>
                 </div>
-            </article>
+            </div>
+            </section>
         </div>
     );
 };
@@ -27,4 +34,6 @@ Article.propTypes = {
 };
 
 export default Article;
+
+
 

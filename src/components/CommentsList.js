@@ -10,19 +10,21 @@ import CommentForm from './CommentForm';
 class CommentsList extends Component {
 
     render () {
-        if (this.props.loading) return <div className='spinner'><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i><span className="sr-only">Loading...</span></div>;
+        
         return (
-            <div className='comment-list'>
-                <CommentForm articleId={this.props.params.articleId}/>
-                {this.props.comments.map((comment, i) => {
-                    return (
-                        <CommentCard 
-                        key={i}
-                        {...comment}
-                        sendCommentVote={this.props.sendCommentVote}
-                        />
-                    );
-                })}
+            <div className='columns'>
+                <div className='column is-10'>
+                    <CommentForm articleId={this.props.params.articleId}/>
+                    {this.props.comments.map((comment, i) => {
+                        return (
+                            <CommentCard 
+                            key={i}
+                            {...comment}
+                            sendCommentVote={this.props.sendCommentVote}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         );
     }

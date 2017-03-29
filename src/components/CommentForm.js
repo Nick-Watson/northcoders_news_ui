@@ -15,7 +15,7 @@ function CommentForm (props) {
                     onChange={handleChange}
                     value={props.textInput}
                 />
-                <input id='button' type='submit' value='Post' />
+                <input id='button' className="button is-danger" type='submit' value='Post' />
             </form>
         </div>
     );
