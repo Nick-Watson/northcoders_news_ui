@@ -6,11 +6,11 @@ import '../css/bulma.css';
 
 
 const ArticleCard = function (props) {
-  function upVote() {
+  function upVote () {
     props.sendVote(props.id, 'up');
   }
 
-  function downVote() {
+  function downVote () {
     props.sendVote(props.id, 'down');
   }
 
@@ -27,7 +27,7 @@ const ArticleCard = function (props) {
         </div>
         <div className="column" id='flex-centered-between'>
           <Link to={`/${props.topic}/${props.id}`} id='is-title'><h4 className="title is-4">{props.title}</h4></Link>
-          <Link to={`/${props.topic}/${props.id}/comments`}>{'comments'}</Link>
+          <Link to={`/${props.topic}/${props.id}/comments`}>{props.comments + ' comments'}</Link>
         </div>
       </div>
 

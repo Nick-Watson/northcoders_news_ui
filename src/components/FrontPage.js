@@ -37,7 +37,7 @@ function mapDispatchToProps (dispatch) {
 
 function mapStateToProps (state) {
   return {
-    articles: getTopArticles(state, 20),
+    articles: getTopArticles(state, 50),
     loading: state.articles.loading
   };
 }

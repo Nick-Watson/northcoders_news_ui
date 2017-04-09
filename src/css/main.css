@@ -1,6 +1,3 @@
-* {
-    /*border: 1px solid black;*/
-}
 
 #author {
     margin-left: 10px;
@@ -12,6 +9,7 @@
 
 #ArticlePage{
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #ArticleList {

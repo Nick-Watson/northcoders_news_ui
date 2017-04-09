@@ -1,6 +1,5 @@
 import * as types from '../actions/types';
 
-// good template for data fetching
 const initialState = {
   list: [],
   byId: {},
@@ -26,13 +25,10 @@ function articlesReducer (prevState = initialState, action) {
     newState.loading = false;
   }
 
-  if (action.type === types.SEND_VOTE_SUCCESS) {
-    const id = action.data._id;
-    const newArticle = action.data;
-    
-    newState.byId[id] = Object.assign({}, newState.byId[id]);
-    newState.byId[id] = newArticle;
-    newState.loading = false;
+  if (action.type === types.SEND_VOTE_SUCCESS) {     
+    const id = action.data._id;          
+    newState.byId[id] = Object.assign({}, newState.byId[id], action.data);     
+    newState.loading = false;   
   }
 
   if (action.type === types.SEND_VOTE_ERROR) {
