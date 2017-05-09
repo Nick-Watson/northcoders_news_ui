@@ -1,9 +1,5 @@
 import React from 'react';
-import '../css/font-awesome.css';
 import { Link } from 'react-router';
-import '../css/main.css';
-import '../css/bulma.css';
-
 
 const ArticleCard = function (props) {
   function upVote () {
@@ -33,6 +29,15 @@ const ArticleCard = function (props) {
 
     </div>
   );
+};
+
+ArticleCard.propTypes = {
+    sendVote: React.PropTypes.func,
+    id: React.PropTypes.string,
+    votes: React.PropTypes.number,
+    topic: React.PropTypes.string,
+    comments: React.PropTypes.number,
+    title: React.PropTypes.string
 };
 
 

@@ -6,11 +6,9 @@ import {sendCommentVote} from '../actions/actions';
 import {getTopComments} from '../reducer/comments.reducer';
 import CommentForm from './CommentForm';
 
-
 class CommentsList extends Component {
 
-    render () {
-        
+    render () {   
         return (
             <div className='columns'>
                 <div className='column is-10'>
@@ -27,8 +25,7 @@ class CommentsList extends Component {
                 </div>
             </div>
         );
-    }
-    
+    }  
 }
 
 function mapStateToProps (state) {
@@ -46,5 +43,11 @@ function mapDispatchToProps (dispatch) {
     }
   };
 }
+
+CommentsList.propTypes = {
+  sendCommentVote: React.PropTypes.func.isRequired,
+  comments: React.PropTypes.array.isRequired,
+  params: React.PropTypes.object
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentsList);

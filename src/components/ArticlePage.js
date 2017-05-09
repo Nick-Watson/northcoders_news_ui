@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Component } from 'react';
-// import {Link} from 'react-router';
 import {fetchArticleComments} from '../actions/actions';
 import {getTopComments} from '../reducer/comments.reducer';
 import Article from './Article';
@@ -44,5 +43,14 @@ function mapDispatchToProps (dispatch) {
     }
   };
 }
+
+ArticlePage.propTypes = {
+    fetchComments: React.PropTypes.func,
+    params: React.PropTypes.object,
+    loading: React.PropTypes.bool,
+    byId: React.PropTypes.object,
+    children: React.PropTypes.object,
+    comments: React.PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);

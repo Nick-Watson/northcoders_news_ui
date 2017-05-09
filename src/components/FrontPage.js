@@ -18,11 +18,6 @@ class FrontPage extends Component {
   }
 }
 
-FrontPage.propTypes = {
-  loading: React.PropTypes.bool.isRequired,
-  articles: React.PropTypes.array.isRequired
-};
-
 function mapDispatchToProps (dispatch) {
   return {
     getArticles: () => {
@@ -41,5 +36,12 @@ function mapStateToProps (state) {
     loading: state.articles.loading
   };
 }
+
+FrontPage.propTypes = {
+  loading: React.PropTypes.bool.isRequired,
+  articles: React.PropTypes.array.isRequired,
+  sendVote: React.PropTypes.func.isRequired,
+  params: React.PropTypes.object
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(FrontPage);

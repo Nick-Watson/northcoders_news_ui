@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import '../css/font-awesome.css';
-
-
 const Article = function (props) {
     return (
         <div className='box'>
@@ -31,6 +28,7 @@ Article.propTypes = {
     belongs_to: React.PropTypes.string,
     _id: React.PropTypes.string,
     comments: React.PropTypes.array,
+    created_by: React.PropTypes.string
 };
 
 export default Article;

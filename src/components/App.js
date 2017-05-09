@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {fetchArticles} from '../actions/actions';
 import NavBar from './NavBar';
 import '../css/bulma.css';
+import '../css/main.css';
+import '../css/font-awesome.css';
 
 class App extends Component {
   
@@ -47,5 +49,11 @@ function mapDispatchToProps (dispatch) {
     }
   };
 }
+
+App.propTypes = {
+    fetchArticles: React.PropTypes.func,
+    params: React.PropTypes.object,
+    children: React.PropTypes.object
+};
 
 export default connect(null, mapDispatchToProps)(App);

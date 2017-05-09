@@ -83,7 +83,7 @@ describe('postComment', () => {
     
     it('updates the comments with the new comment', () => {
         let actual = commentsReducer(initalState, action) ;
-        let expected = {comments:{'123' : {_id:'123', body: 'hello'}}, loading: false} ;
+        let expected = {comments:{'123' : {_id:'123', body: 'hello'}}, 'textInput': '', loading: false} ;
         expect(actual).to.eql(expected);
     });
 

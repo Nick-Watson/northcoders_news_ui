@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../css/bulma.css';
 import {updateTextInput} from '../actions/actions';
 import {postComment} from '../actions/actions';
 
@@ -20,15 +19,14 @@ function CommentForm (props) {
         </div>
     );
 
-function handleChange (e) {
-    props.updateTextInput(e.target.value);
-}
+    function handleChange (e) {
+        props.updateTextInput(e.target.value);
+    }
 
-function handleSubmit (e) {
-    e.preventDefault();
-    if (props.textInput) props.postComment(props.articleId, props.textInput);
-}
-
+    function handleSubmit (e) {
+        e.preventDefault();
+        if (props.textInput) props.postComment(props.articleId, props.textInput);
+    }
 }
 
 function mapStateToProps (state) {
@@ -36,7 +34,6 @@ function mapStateToProps (state) {
         loading: state.comments.loading,
         textInput: state.comments.textInput
     };
-
 }
 
 function mapDispatchToProps (dispatch) {
@@ -49,5 +46,11 @@ function mapDispatchToProps (dispatch) {
     }
   };
 }
+
+CommentForm.propTypes = {
+    textInput: React.PropTypes.string,
+    postComment: React.PropTypes.func,
+    articleId: React.PropTypes.string,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

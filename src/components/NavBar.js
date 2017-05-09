@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTopics } from '../actions/actions';
 import { Link } from 'react-router';
-import '../css/bulma.css';
 
 class NavBar extends Component {
 
@@ -46,5 +45,10 @@ function mapStateToProps (state) {
 
   };
 }
+
+NavBar.propTypes = {
+    getTopics: React.PropTypes.func,
+    topics: React.PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

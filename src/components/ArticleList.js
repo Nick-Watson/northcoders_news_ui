@@ -1,7 +1,5 @@
 import React from 'react';
 import ArticleCard from './ArticleCard';
-import '../css/bulma.css';
-
 
 const ArticleList = function (props) {
     const heading = props.title ? <h1 className ='title is-2' id='topic-heading'>{props.title.toUpperCase()}</h1> : '';

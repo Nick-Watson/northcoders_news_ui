@@ -43,7 +43,6 @@ function commentsReducer (prevState = initialState, action) {
   }
 
   if (action.type === types.POST_COMMENT_SUCCESS) {
-    console.log(action.data);
     newState.comments = Object.assign({}, newState.comments);
     newState.comments[action.data._id] = action.data;
     newState.loading = false;

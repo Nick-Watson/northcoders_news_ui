@@ -5,9 +5,6 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import './css/bulma.css';
-import './css/font-awesome.css';
-
 import App from './components/App';
 import FrontPage from './components/FrontPage';
 import reducer from './reducer/index.reducer';
@@ -16,7 +13,6 @@ import CommentsList from './components/CommentsList';
 
 const logger = createLogger();
 
-// second argument takes middleware
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
