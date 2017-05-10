@@ -2,7 +2,7 @@ import React from 'react';
 import ArticleCard from './ArticleCard';
 
 const ArticleList = function (props) {
-    const heading = props.title ? <h1 className ='title is-2' id='topic-heading'>{props.title.toUpperCase()}</h1> : '';
+    const heading = props.title ? createBanner(props.title) : '';
 
     return (
         <div id="ArticleList">
@@ -27,5 +27,9 @@ ArticleList.propTypes = {
     title: React.PropTypes.string,
     sendVote: React.PropTypes.func.isRequired
 };
+
+function createBanner (theme) {
+    return <div className='section' id={`topic-heading-container-${theme}`}><h1 className ='title is-2' id='topic-heading'>{theme.toUpperCase()}</h1></div>;
+}
 
 export default ArticleList;

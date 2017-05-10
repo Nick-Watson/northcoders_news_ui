@@ -61,9 +61,26 @@
     color: #ff3860;
     margin-bottom: 15px;
 }
+
+#topic-heading-container-football {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-image: url('./backgrounds/soccer-stadium.jpg');
+    background-position: center;
+}
+#topic-heading-container-cooking {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-image: url('./backgrounds/cooking-banner.jpg')
+}
+#topic-heading-container-coding {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-image: url('./backgrounds/devcentralimage.jpg')
+}
+
 #topic-heading{
-    color: #ff3860;
-    margin-left: 20px;
+    color: white;
 }
 
  #button {
@@ -131,7 +148,8 @@ i:hover {
     color: white;
 }
 .nav-category:hover {
-  -webkit-transform: scale(1.2); 
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 #nav {
@@ -142,3 +160,18 @@ i:hover {
   color: #ff3860;
   font-size: 18px;
 }
+
+#footer-title {
+    color: #ff3860;
+    text-decoration: none;
+}
+#footer-name {
+    color: #ff3860;
+    text-decoration: none;
+    display: inline-block;
+}
+#footer-github {
+    color: #ff3860;
+    text-decoration: none;
+}
+

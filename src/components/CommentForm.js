@@ -5,7 +5,7 @@ import {postComment} from '../actions/actions';
 
 function CommentForm (props) {
     return (
-        <div className=''>
+        <div className='box'>
             <form className='form' onSubmit={handleSubmit}>
                 <textarea
                     id='text-box'
