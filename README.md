@@ -29,7 +29,7 @@ Once the webpack has finsihed bundling go to [http://localhost:9090/](http://loc
 
 ## Tests
 
-The Redux reducer was tested in order to ensure it was functioning correctly. This was done to ensure any bugs that occur will be from a different source and to speed up the development process. To view the tests please follow the instructions below.
+The Redux reducer function was tested in order to ensure it was functioning correctly. This was done to ensure that any bugs that occur will be from a different source and speed up the development process. To view the tests please follow the instructions below.
 
 From the ncn directory in the command line;
 
