@@ -1,32 +1,29 @@
 import React from 'react';
-import  {Component} from 'react';
 import CommentCard from './CommentCard';
 import { connect } from 'react-redux';
 import {sendCommentVote} from '../actions/actions';
 import {getTopComments} from '../reducer/comments.reducer';
 import CommentForm from './CommentForm';
 
-class CommentsList extends Component {
+const CommentsList = function (props) {
 
-    render () {   
         return (
             <div className='columns'>
                 <div className='column is-10'>
-                    <CommentForm articleId={this.props.params.articleId}/>
-                    {this.props.comments.map((comment, i) => {
+                    <CommentForm articleId={props.params.articleId}/>
+                    {props.comments.map((comment, i) => {
                         return (
                             <CommentCard 
                             key={i}
                             {...comment}
-                            sendCommentVote={this.props.sendCommentVote}
+                            sendCommentVote={props.sendCommentVote}
                             />
                         );
                     })}
                 </div>
             </div>
         );
-    }  
-}
+};
 
 function mapStateToProps (state) {
     return {

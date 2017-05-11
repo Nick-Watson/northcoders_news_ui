@@ -22,19 +22,21 @@ class App extends Component {
 		return (
 			<div>
 				
-				<section className="hero is-danger is-bold">
-					<div className="hero-body">
-						<div className="container">
-							<h1 className="title">
-								Northcoders
-							</h1>
-							<h2 className="subtitle">
-								News
-							</h2>
+				<header>
+					<section className="hero is-danger is-bold">
+						<div className="hero-body">
+							<div className="container">
+								<h1 className="title">
+									Northcoders
+								</h1>
+								<h2 className="subtitle">
+									News
+								</h2>
+							</div>
 						</div>
-					</div>
-					<NavBar fetchArticles={this.props.fetchArticles} />
-				</section>
+						<NavBar fetchArticles={this.props.fetchArticles} />
+					</section>
+				</header>
 
 				<div className="container">
 					{this.props.children}

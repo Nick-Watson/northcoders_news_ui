@@ -1,22 +1,19 @@
 import React from 'react';
-import { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchArticles } from '../actions/actions';
 import ArticleList from './ArticleList';
 import { getTopArticles } from '../reducer/articles.reducer';
 import { sendVote } from '../actions/actions';
 
-class FrontPage extends Component {
+const FrontPage = function (props) {
 
-	render () {
-		if (this.props.loading) return <div className='spinner'><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i><span className="sr-only">Loading...</span></div>;
+		if (props.loading) return <div className='spinner'><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i><span className="sr-only">Loading...</span></div>;
 		return (
 			<div id='FrontPage'>
-				<ArticleList articles={this.props.articles} sendVote={this.props.sendVote} title={this.props.params.topic} />
+				<ArticleList articles={props.articles} sendVote={props.sendVote} title={props.params.topic} />
 			</div>
 		);
-	}
-}
+};
 
 function mapDispatchToProps (dispatch) {
 	return {

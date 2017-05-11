@@ -3,7 +3,7 @@ import articlesReducer from '../src/reducer/articles.reducer.js';
 import commentsReducer from '../src/reducer/comments.reducer.js';
 import * as actions from '../src/actions/actions';
 
-describe('sendVote', () => {
+describe('sendArticleVote', () => {
     const article = {data : { _id: 123, votes: 5 }};
     const action = actions.sendVoteSuccess(article);
     const initialState = {
@@ -43,7 +43,7 @@ describe('sendCommentVote', () => {
     };
 
 
-    it('updates vote of article in the state', () => {
+    it('updates vote of comment in the state', () => {
         let actual = commentsReducer(initialState, action);
         let expected = {
             comments: {

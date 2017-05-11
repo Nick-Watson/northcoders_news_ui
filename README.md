@@ -1,6 +1,6 @@
 # Northcoders News
 
-Northcoders News is a social news aggregation, web content rating, and discussion website similar to [Reddit](https://www.reddit.com/). Articles are divided into topics and each article has user curated ratings and can be up or down voted using the [API](https://github.com/Nick-Watson/wk07sprint03_northcoders_news_api_feb2017). Users can also add comments about an article which can also be up or down voted. A user can add comments and remove any comments which they have added.
+Northcoders News is a social news aggregation, web content rating, and discussion website similar to [Reddit](https://www.reddit.com/). Articles are divided into topics and each article has user curated ratings and can be up or down voted using the [API](https://github.com/Nick-Watson/northcoders_news_api). Users can also add comments about an article which can also be up or down voted. A user can add comments and remove any comments which they have added.
 
 ### Prerequisites
 
@@ -16,9 +16,9 @@ Available [here](https://nodejs.org/en/download/current/)
 From the command line and in a directory of your choosing;
 
 ````````
-git clone https://github.com/Nick-Watson/w06-northcoders-news/tree/remote-week ncn
+git clone https://github.com/Nick-Watson/northcoders_news_ui.git northcoders_news_ui
 
-cd ncn
+cd northcoders_news_ui
 
 npm install 
 
@@ -31,7 +31,7 @@ Once the webpack has finsihed bundling go to [http://localhost:9090/](http://loc
 
 The Redux reducer function was tested in order to ensure it was functioning correctly. This was done to ensure that any bugs that occur will be from a different source and speed up the development process. To view the tests please follow the instructions below.
 
-From the ncn directory in the command line;
+From the northcoders_news_ui directory in the command line;
 
 ```
 npm test

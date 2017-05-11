@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import {updateTextInput} from '../actions/actions';
 import {postComment} from '../actions/actions';
 
-function CommentForm (props) {
+const CommentForm = function (props) {
     return (
         <div className='box'>
-            <form className='form' onSubmit={handleSubmit}>
+            <form className='form' id='comment-form'onSubmit={handleSubmit}>
                 <textarea
                     id='text-box'
                     type='text'
@@ -27,7 +27,7 @@ function CommentForm (props) {
         e.preventDefault();
         if (props.textInput) props.postComment(props.articleId, props.textInput);
     }
-}
+};
 
 function mapStateToProps (state) {
     return {

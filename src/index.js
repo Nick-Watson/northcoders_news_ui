@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
@@ -11,9 +10,10 @@ import reducer from './reducer/index.reducer';
 import ArticlePage from './components/ArticlePage';
 import CommentsList from './components/CommentsList';
 
-const logger = createLogger();
+// import createLogger from 'redux-logger';
+// const logger = createLogger();
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>

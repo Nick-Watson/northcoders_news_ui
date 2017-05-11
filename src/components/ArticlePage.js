@@ -25,7 +25,6 @@ class ArticlePage extends Component {
             );
         }
     }
-
 }
 
 function mapStateToProps (state) {

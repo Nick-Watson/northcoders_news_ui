@@ -2,7 +2,6 @@ import * as types from './types';
 import axios from 'axios';
 import {ROOT} from '../../config';
 
-// action creator for fetching articles
 export function fetchArticles (topic) {
   let url = `${ROOT}`;
   if (topic) url += `/topics/${topic}/articles`;
@@ -51,26 +50,18 @@ export function fetchArticlesError (err) {
 
 export function fetchTopics () {
   return function (dispatch) {
-    // thunk action
-      // wraps async function
     dispatch(fetchTopicsRequest());
     axios
-      // 3 stages of API request
-        // 1: make request - need spinner while waiting?
-        // 2: succcessful response
-        // 3: error
       .get(`${ROOT}/topics`)
       .then(res => {
-        // do something with response
         dispatch(fetchTopicsSuccess(res.data.topics));
       })
       .catch(err => {
-        // do something when error
         dispatch(fetchTopicsError(err));
       });
   };
 }
-// keep object keys the same name for consistency
+
 export function fetchTopicsRequest () {
   return {
     type: types.FETCH_TOPICS_REQUEST
@@ -93,21 +84,13 @@ export function fetchTopicsError (err) {
 
 export function fetchArticleComments (id) {
     return function (dispatch) {
-    // thunk action
-      // wraps async function
     dispatch(fetchArticleCommentsRequest());
     axios
-      // 3 stages of API request
-        // 1: make request - need spinner while waiting?
-        // 2: succcessful response
-        // 3: error
       .get(`${ROOT}/articles/${id}/comments`)
       .then(res => {
-        // do something with response
         dispatch(fetchArticleCommentsSuccess(res.data.comments));
       })
       .catch(err => {
-        // do something when error
         dispatch(fetchArticleCommentsError(err));
       });
   };
@@ -135,21 +118,13 @@ export function fetchArticleCommentsError (err) {
 
 export function sendVote (articleId, direction) {
   return function (dispatch) {
-      // thunk action
-        // wraps async function
       dispatch(sendVoteRequest());
       axios
-        // 3 stages of API request
-          // 1: make request - need spinner while waiting?
-          // 2: succcessful response
-          // 3: error
         .put(`${ROOT}/articles/${articleId}?vote=${direction}`)
         .then(res => {
-          // do something with response
           dispatch(sendVoteSuccess(res));
         })
         .catch(err => {
-          // do something when error
           dispatch(sendVoteError(err));
         });
     };
@@ -177,21 +152,13 @@ export function sendVoteError (err) {
 
 export function sendCommentVote (commentId, direction) {
   return function (dispatch) {
-      // thunk action
-        // wraps async function
       dispatch(sendCommentVoteRequest());
       axios
-        // 3 stages of API request
-          // 1: make request - need spinner while waiting?
-          // 2: succcessful response
-          // 3: error
         .put(`${ROOT}/comments/${commentId}?vote=${direction}`)
         .then(() => {
-          // do something with response
           dispatch(sendCommentVoteSuccess(commentId,direction));
         })
         .catch(err => {
-          // do something when error
           dispatch(sendCommentVoteError(err));
         });
     };
@@ -226,23 +193,15 @@ export function updateTextInput (str) {
 
 export function postComment (articleId, comment) {
   return function (dispatch) {
-      // thunk action
-        // wraps async function
       dispatch(postCommentRequest());
       axios
-        // 3 stages of API request
-          // 1: make request - need spinner while waiting?
-          // 2: succcessful response
-          // 3: error
         .post(`${ROOT}/articles/${articleId}/comments`,{
           'comment': comment
         })
         .then((res) => {
-          // do something with response
           dispatch(postCommentSuccess(res));
         })
         .catch(err => {
-          // do something when error
           dispatch(postCommentError(err));
         });
     };
@@ -270,21 +229,13 @@ export function postCommentError (err) {
 
 export function deleteComment (commentId) {
   return function (dispatch) {
-      // thunk action
-        // wraps async function
       dispatch(deleteCommentRequest());
       axios
-        // 3 stages of API request
-          // 1: make request - need spinner while waiting?
-          // 2: succcessful response
-          // 3: error
         .delete(`${ROOT}/comments/${commentId}`)
         .then(() => {
-          // do something with response
           dispatch(deleteCommentSuccess(commentId));
         })
         .catch(err => {
-          // do something when error
           dispatch(deleteCommentError(err));
         });
     };
