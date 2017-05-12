@@ -1,6 +1,8 @@
 # Northcoders News
 
-Northcoders News is a social news aggregation, web content rating, and discussion website similar to [Reddit](https://www.reddit.com/). Articles are divided into topics and each article has user curated ratings and can be up or down voted using the [API](https://github.com/Nick-Watson/northcoders_news_api). Users can also add comments about an article which can also be up or down voted. A user can add comments and remove any comments which they have added.
+Northcoders News is a social news aggregation, web content rating, and discussion website similar to [Reddit](https://www.reddit.com/). Articles are divided into topics and each article has user curated ratings that can be up or down voted using the [API](https://github.com/Nick-Watson/northcoders_news_api). Users can also add comments about an article which can also be up or down voted. A user can add comments and remove any comments which they have added.
+
+The UI is deployed on Heroku and can be found [here](https://northcoders-news-ui.herokuapp.com/)
 
 ### Prerequisites
 
@@ -12,6 +14,8 @@ Node.js v7.0.0 or higher
 Available [here](https://nodejs.org/en/download/current/)
 
 ## Getting Started
+
+To run the UI locally, please follow the below commands.
 
 From the command line and in a directory of your choosing;
 
@@ -42,7 +46,7 @@ npm test
 * [Webpack](https://webpack.js.org/) - Module Bundler
 * [React](https://github.com/facebook/react) - User interface framework
 * [Redux](https://github.com/reactjs/redux) - Application state manager
-* [Axios](https://github.com/mzabriskie/axios) - HTTP client used in React
+* [Axios](https://github.com/mzabriskie/axios) - HTTP client
 * [Bulma](https://rometools.github.io/rome/) - CSS framework
 * [Mocha](https://mochajs.org/) - Test framework
 * [Chai](http://chaijs.com/) - Assertation library
