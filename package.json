@@ -40,6 +40,14 @@
     "react-redux": "^4.4.6",
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "webpack": "^2.3.3",
+    "css-loader": "^0.27.3",
+    "babel-loader": "^6.2.4",
+    "babel-core": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.8"
   }
 }
