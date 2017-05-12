@@ -12,6 +12,9 @@ class ArticlePage extends Component {
     }
 
     render () {
+        let children = false;
+        if (this.props.children) children = true;
+        
         if (this.props.loading) return (<div className='spinner'><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i><span className="sr-only">Loading...</span></div>);
         else {
             const article = this.props.byId[this.props.params.articleId];
@@ -19,7 +22,9 @@ class ArticlePage extends Component {
                 <div id="ArticlePage">
                     <Article 
                     {...article}
-                    comments={this.props.comments}/>
+                    comments={this.props.comments}
+                    children={children}
+                    />
                     {this.props.children}
                 </div>
             );

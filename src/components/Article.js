@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Article = function (props) {
+    let commentsLink = '/comments';
+    let commentsLinkText = 'Show ' + props.comments.length + ' comments';
+    if (props.children === true) {
+        commentsLink = '';
+        commentsLinkText = 'Hide comments';
+    }
     return (
         <div className='box'>
             <section className="hero">
@@ -14,7 +20,7 @@ const Article = function (props) {
                     <h2 className="subtitle" id='article-body'>
                         <div >{props.body}</div>
                     </h2>
-                    <p id='comment-link' className='level-left'><Link to={'/' + props.belongs_to + '/' + props._id + '/comments'}>{'Show ' + props.comments.length + ' comments'}</Link></p>
+                    <p id='comment-link' className='level-left'><Link to={'/' + props.belongs_to + '/' + props._id + commentsLink}>{commentsLinkText}</Link></p>
                 </div>
             </div>
             </section>
@@ -28,7 +34,8 @@ Article.propTypes = {
     belongs_to: React.PropTypes.string,
     _id: React.PropTypes.string,
     comments: React.PropTypes.array,
-    created_by: React.PropTypes.string
+    created_by: React.PropTypes.string,
+    children: React.PropTypes.bool
 };
 
 export default Article;

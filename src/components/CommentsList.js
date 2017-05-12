@@ -9,7 +9,7 @@ const CommentsList = function (props) {
 
         return (
             <div className='columns'>
-                <div className='column is-10'>
+                <div className='column is-12'>
                     <CommentForm articleId={props.params.articleId}/>
                     {props.comments.map((comment, i) => {
                         return (

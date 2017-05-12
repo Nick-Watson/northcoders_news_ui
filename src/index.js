@@ -10,9 +10,6 @@ import reducer from './reducer/index.reducer';
 import ArticlePage from './components/ArticlePage';
 import CommentsList from './components/CommentsList';
 
-// import createLogger from 'redux-logger';
-// const logger = createLogger();
-
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
